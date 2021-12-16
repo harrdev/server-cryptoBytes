@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const commentSchema = require('../models/comment')
 
 const savedCoinSchema = new mongoose.Schema(
 	{
@@ -35,6 +36,7 @@ const savedCoinSchema = new mongoose.Schema(
         vwap24Hr: {
             type: String,
         },
+        comments: [commentSchema],
         owner: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: 'User',

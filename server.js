@@ -73,6 +73,9 @@ app.use(userRoutes)
 app.use(coindb)
 app.use(coincap)
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*")
+})
 // register error handling middleware
 // note that this comes after the route middlewares, because it needs to be
 // passed any error messages from them

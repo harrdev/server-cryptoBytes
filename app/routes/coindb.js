@@ -27,6 +27,7 @@ const router = express.Router()
 
 // POST (create) route to add a coin to our followed list
 router.post('/dashboard', requireToken, (req, res, next) => {
+    console.log('Di this hi')
     req.body.info.owner = req.user.id
     Saved.create({
         id: req.body.info.id,
