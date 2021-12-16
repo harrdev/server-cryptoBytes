@@ -44,13 +44,13 @@ router.post('/dashboard', requireToken, (req, res, next) => {
         owner: req.body.info.owner
     })
     .then(addedCoin => {
-        res.json({ message: "Coin added", addedCoin})
+        res.json({coinAdded: 'this coin was favorited', addedCoin})
     })
         .catch(next)
 })
 
 // INDEX
-// GET /examples
+
 router.get('/dashboard', requireToken, (req, res, next) => {
     Saved.find()
         .then((coins) => {
@@ -75,9 +75,8 @@ router.delete('/dashboard/:id', (req, res, next) => {
     Saved.findOneAndDelete({
         _id: req.params.id
     })
-    // this .then with the res is what's being sent to client
     .then(deletedCoin => {
-        res.json({ message: "Deleted Coin", deletedCoin})
+        res.json({message: 'coin was deleted', deletedCoin})
     })
     .catch(err => {
         console.log('Failed to delete: ', err)
